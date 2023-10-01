@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# MongoDB database
+__init__/
+__init__.py
+
+# IDE files
+.idea/
+
+# macOS
+.DS_Store
+
+# Compiled Python files
+*.pyc
+
+# Log files
+*.log
+
+# Output files
+output/
