@@ -1,5 +1,5 @@
 
-# Your Quote Collection Program
+# Quote Collection Program
 
 This program allows you to perform web scraping of quotes and authors and store them in a MongoDB database.
 
