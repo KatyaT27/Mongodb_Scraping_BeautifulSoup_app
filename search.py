@@ -6,18 +6,31 @@ DB_NAME = "web13"
 
 
 def search_by_author(author_name, collection):
-    # Create a MongoDB client
-    client = pymongo.MongoClient(MONGO_URI)
+    try:
+        # Create a MongoDB client
+        client = pymongo.MongoClient(MONGO_URI)
 
-    # Access the database and collection
-    db = client[DB_NAME]
+        # Access the database and collection
+        db = client[DB_NAME]
 
-    # Search for quotes by author name in the "quotes" collection
-    # Note the change in query structure
-    query = {"author.fullname": author_name}
-    quotes = db[collection].find(query)
+        # Search for quotes by author name in the "quotes" collection
+        query = {"author.fullname": author_name}
+        quotes = db[collection].find(query)
 
-    return list(quotes)
+        # Iterate through the quotes and replace the author ObjectId with the author's name
+        author_quotes = []
+        for quote in quotes:
+            author_id = quote["author"]["$oid"]
+            author_details = db["authors"].find_one({"_id": author_id})
+            if author_details:
+                quote["author"] = author_details["fullname"]
+            author_quotes.append(quote)
+
+        return author_quotes
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return []
+
 
 # Function to search quotes by tag
 
