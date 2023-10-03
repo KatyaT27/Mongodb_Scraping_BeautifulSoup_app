@@ -5,10 +5,6 @@ from load_data import load_data_from_json
 # Connect to the MongoDB database
 connect_to_db()
 
-# Load data from JSON files (assuming you have data loading logic)
-# Replace 'authors.json' and 'quotes.json' with your actual data file paths
-authors_data = load_data_from_json('authors.json')
-quotes_data = load_data_from_json('quotes.json')
 
 # Assuming you have data loading functions, you can use them to load data
 # into your MongoDB database here
