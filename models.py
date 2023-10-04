@@ -8,5 +8,5 @@ class Author(Document):
 
 class Quote(Document):
     tags = ListField(StringField())
-    author = ReferenceField(Author)
+    author = StringField()
     quote = StringField()
